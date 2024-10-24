@@ -15,7 +15,7 @@ Acho que uma bom tema para iniciar é Regressão Linear, quando comecei no mundo
 
 Para leigos:
 
-A regressão linear é uma ferreamentaque busca modelar a relação entre um conjunto de dados, em outras palavreas ela busca apróximar "funcionamento" de um conjunto de dados com objetivo de prever novos valores. Na matemática voçê já viu falar na qquação do 1° grau y = ax+b,
+A regressão linear é uma ferreamentaque busca modelar a relação entre um conjunto de dados, em outras palavreas ela busca apróximar "funcionamento" de um conjunto de dados com objetivo de prever novos valores. Na matemática voçê já viu falar na equação do 1° grau **y = ax + b**,
 
 ### O problema: 
 
@@ -25,9 +25,9 @@ Vamos supor que você se deparou com o seguinte problema:
 
 Você estava em seu laboratório e estava trabalhando em um resistor feito de grafite de lápis. Para saber sua resistência e incluir essa informação em um artigo, você aplicou um valor de tensão **V** sobre ele e mediu a corrente, utilizando a Lei de Ohm.
 
-***R=V/I***
+**R=V/I**
 
-Após a primeira medição, você chegou a um valor de 100Ω (ohms). Duvidando do resultado, você testou outro valor e obteve 8Ω. Ao realizar várias medições, percebeu que os valores apresentavam leves variações.
+Após a primeira medição, você chegou a um valor de 100Ω (ohms). Duvidando do resultado, você testou outro valor e obteve 80Ω. Ao realizar várias medições, percebeu que os valores apresentavam leves variações.
 
 Nesse ponto, você quer um valor mais confiável para descrever seu resistor. Uma alternativa é somar todas as observações e calcular a média.
 Como você gosta de desafios partiu para a segunda opção:
@@ -38,7 +38,23 @@ Como você gosta de desafios partiu para a segunda opção:
    
 ![GRÁFICO DE DISPERSÃO](1-REGRESSAO_LINEAR/PLOTS/dispersao.svg)
 
+A partir deste momento, você já consegue observar o comportamento linear entre **V** e **I**, como é esperado. Basta calcular a reta que melhor aproxima esse conjunto de pontos, algo no formato **y = ax + b**. No nosso caso, isso se traduz em **V = RI**, onde **R = a** (coeficiente angular).
+
+A primeira forma que vamos utilizar é por meio de métodos analíticos:
+
+### MÉTODO 1: MÉTODO DOS MÍNIMOS QUADRÁTICOS
+
+Um sistema linear simples no formato **y = ax + b** consiste em dois coeficientes:
+
+- **Coeficiente Angular (a)**: Representa a inclinação da reta em relação a **x** ou a variação de **y** em função de **x**.
+- **Coeficiente Linear (b)**: Indica onde a reta cruza o eixo **y** ou o valor de **y** quando **x = 0**.
+
+Com esses dois coeficientes, podemos descrever qualquer reta. O **Método dos Mínimos Quadráticos** é uma técnica que, quando aplicada a um conjunto de pontos, encontra os melhores valores dos coeficientes **a** e **b**. Em outras palavras, esse método determina os valores que melhor descrevem o comportamento do conjunto de pontos por meio de uma reta.
 
 
-###O que é a regressão LINEAR? 🤔
+
+ 
+
+
+
   
