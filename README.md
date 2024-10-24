@@ -51,12 +51,20 @@ Um sistema linear simples no formato **y = ax + b** consiste em dois coeficiente
 
 Com esses dois coeficientes, podemos descrever qualquer reta. O **Método dos Mínimos Quadráticos** é uma técnica que, quando aplicada a um conjunto de pontos, encontra os melhores valores dos coeficientes **a** e **b**. Em outras palavras, esse método determina os valores que melhor descrevem o comportamento do conjunto de pontos por meio de uma reta.
 
-![equação método dos mínimos quadráticos](1-REGRESSAO_LINEAR/PLOTS/metodo_minimos.png)
-
 Implementei isso em python e plotei os resultados: 
 
+![regresão mínimos quadráticos](1-REGRESSAO_LINEAR/PLOTS/metodos_mt_comp.svg)
 
-![equação método dos mínimos quadráticos](1-REGRESSAO_LINEAR/PLOTS/metodo_minimos.png)
+Aqui a comparação entre o modelo analítico (MMQT)  e  model.linear_model.LinearRegression(), fica praticaamente inperceptível a diferença:
+
+![equação método dos mínimos quadráticos](1-REGRESSAO_LINEAR/PLOTS/metodos_predict_comp.svg)
+
+Aqui podemos ver melhor o erro, veja que é x10^(-15)
+
+![equação método dos mínimos quadráticos](1-REGRESSAO_LINEAR/PLOTS/erro.svg)
+
+
+Todo o algorítmo se enontra aqui com todos os detalhes:
 
  
 
