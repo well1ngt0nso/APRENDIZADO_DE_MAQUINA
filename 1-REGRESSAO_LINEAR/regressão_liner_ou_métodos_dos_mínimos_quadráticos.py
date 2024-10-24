@@ -40,7 +40,7 @@ e = 0 # erro y(real) - y(encontrado) (não utilizamos aqui)
 x = 0 # variável dependente
 y = 0 # resultado (variável independente)
 
-"""##VALRES DE  TESTE"""
+"""##VALROES DE  TESTE"""
 
 #VALORES DE EXEMPLO GERADOS PELO CHAT GPT PARA CÁLCULO
 #CASO FOSSEM DADOS DE CSV, AQUI NÓS IRIAMOS FAZER A INSERÇÃO DOS MESMOS
@@ -63,7 +63,7 @@ y = [3.50, 3.10, 4.13, 5.25, 3.73, 3.97, 6.02, 5.45, 4.46, 5.71, 4.95, 5.18, 6.1
 """##PLOTAGEM DOS DADOS"""
 
 #PRIMEIRO CONTATO COM OS MESMOS DE FORMA GRÁFICA
-#FORMA DE ENCONTRAR POSSÍVEIS ERROS, OS CHAMADOS OUTLIERS
+#FORMA DE ENCONTRAR POSSÍVEIS ERROS, OUTLIERS
 
 x = np.array(x)
 y = np.array(y)
