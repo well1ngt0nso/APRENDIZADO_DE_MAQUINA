@@ -13,7 +13,7 @@ Let's Go!!
 [Uploading SP_100 (2).eps…]()
 
 ### O problema: 
-![Descrição da Imagem](caminho/para/sua-imagem.svg)
+![Descrição da Imagem](1_REGRESSAO_LINEAR/PLOTS/dispercao.svg)
 
 ###O que é a regressão LINEAR? 🤔
   
