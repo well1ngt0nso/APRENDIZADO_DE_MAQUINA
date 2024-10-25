@@ -24,7 +24,22 @@ Como você gosta de desafios partiu para a segunda opção:
 1. Você fez várias mediçoes:
 2. Plotou Todas em um gráfico de corrente por tensão
 
-   
+     ```python
+      """##PLOTAGEM DOS DADOS"""
+      
+      #PRIMEIRO CONTATO COM OS MESMOS DE FORMA GRÁFICA
+      #FORMA DE ENCONTRAR POSSÍVEIS ERROS, OUTLIERS
+      
+      x = np.array(x)
+      y = np.array(y)
+      plt.figure()
+      plt.plot(x, y, '.', color = 'black', ls ='none')
+      plt.xlabel('Tensão (V)')
+      plt.ylabel('Corrente (A)')
+      plt.title( 'Gráfico de dispersão Fig.1')
+      plt.savefig('disperção.svg', format='svg',  bbox_inches='tight')
+      plt.show()
+     ```
 ![GRÁFICO DE DISPERSÃO](PLOTS/dispersao.svg)
 
 A partir deste momento, você já consegue observar o comportamento linear entre **V** e **I**, como é esperado. Basta calcular a reta que melhor aproxima esse conjunto de pontos, algo no formato **y = ax + b**. No nosso caso, isso se traduz em **V = RI**, onde **R = a** (coeficiente angular).
@@ -40,9 +55,55 @@ Um sistema linear simples no formato **y = ax + b** consiste em dois coeficiente
 
 Com esses dois coeficientes, podemos descrever qualquer reta. O **Método dos Mínimos Quadráticos** é uma técnica que, quando aplicada a um conjunto de pontos, encontra os melhores valores dos coeficientes **a** e **b**. Em outras palavras, esse método determina os valores que melhor descrevem o comportamento do conjunto de pontos por meio de uma reta.
 
-Implementei isso em python e plotei os resultados: 
+Implementei isso em python e plotei os resultados,
+Gostaria de destacar apenas a forma que calculei: 
 
+   ```python
+         
+      """ ##DESEMVOLVENDO A LÓGICA (MÉTODO DOS MÍNIMOS QUADRÁTICOS)
+      """
+      
+      # y = ax + b
+      # b = ( n * soma(xi*yi) - soma(xi)*soma(yi)) / (n * soma(xi²) - soma(xi)²)
+      #x.shape #84 (quantidade de elementos)
+      
+      n = x.shape[0]
+      xy = x * y
+      sum_xy = sum(xy)
+      sum_x = sum(x)
+      sum_y = sum(y)
+      x_qdt = x * x
+      
+      b = ( n * sum_xy - sum_x*sum_y ) /  (( n *sum(x_qdt)) - ( sum_x * sum_x ))
+      print("COEFICIENT ANGULAR:",  b)
+      
+      def func(x, a, b):
+        return x*b + a
+      
+      # a = media(y) - b*media(x)
+      a =  (sum_y/n) - (b*(sum_x/n))
+      print("COEFICIENT LINEAR:", a)
+   ```
+    
 ![regresão mínimos quadráticos](PLOTS/metodos_mt_comp.svg)
+
+
+### MÉTODO 1: MÉTODO UTILIZANDO A BIBLIOTÉCA SKLEARN
+
+Em poucas linhas conseguimos criar um modelo de aprendizado de máquina e treinalo, em suma 2, o restante é manipulação: 
+```python
+import matplotlib.pyplot as plt
+import numpy as np
+import sklearn.linear_model
+
+model = sklearn.linear_model.LinearRegression() # Criando modelo Linear
+x = x.reshape(-1,1) # x y são estão no formato (84,), .fit aceita matrizes
+y = y.reshape(-1,1) # então crio uma de 1 coluna e a quantidade de linhas a função escolhe (-1)
+model.fit(x,y) #treino o modelo no conjunto já tratado
+x.shape
+
+print(model.predict([[2], [4]])) #prevê a saída para dois valores
+```
 
 Aqui a comparação entre o modelo analítico (MMQT)  e  model.linear_model.LinearRegression(), fica praticaamente inperceptível a diferença:
 
@@ -53,7 +114,7 @@ Aqui podemos ver melhor o erro, veja que é x10^(-15)
 ![equação método dos mínimos quadráticos](PLOTS/erro.svg)
 
 
-Todo o algorítmo se enontra aqui com todos os detalhes:
+Todo o algorítmo e dados utilizados se enontram [aqui](1-REGRESSAO_LINEAR/regressão_liner_ou_métodos_dos_mínimos_quadráticos.py).
 
  
 
