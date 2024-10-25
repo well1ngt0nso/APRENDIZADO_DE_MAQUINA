@@ -64,11 +64,7 @@ plt.title( 'Gráfico de dispersão Fig.1')
 plt.savefig('disperção.svg', format='svg',  bbox_inches='tight')
 plt.show()
 
-"""##DESEMVOLVENDO A LÓGICA (MÉTODO DOS MÍNIMOS QUADRÁTICOS)
-
-
-
-"""
+"""##DESEMVOLVENDO A LÓGICA (MÉTODO DOS MÍNIMOS QUADRÁTICOS)"""
 
 # y = ax + b
 # b = ( n * soma(xi*yi) - soma(xi)*soma(yi)) / (n * soma(xi²) - soma(xi)²)
@@ -106,7 +102,7 @@ plt.show()
 
 print(func(2, a , b))
 
-"""##TESTE UTILIZANDO A BIBLIOTECA DO SKITLEARN"""
+"""##TESTE UTILIZANDO A BIBLIOTECA DO SKLEARN"""
 
 import matplotlib.pyplot as plt
 import numpy as np
@@ -115,10 +111,10 @@ import sklearn.linear_model
 model = sklearn.linear_model.LinearRegression() # Criando modelo Linear
 x = x.reshape(-1,1) # x y são estão no formato (84,), .fit aceita matrizes
 y = y.reshape(-1,1) # então crio uma de 1 coluna e a quantidade de linhas a função escolhe (-1)
-model.fit(x,y)
+model.fit(x,y) #treino o modelo no conjunto já tratado
 x.shape
 
-print(model.predict([[2], [4]]))
+print(model.predict([[2], [4]])) #prevê a saída para dois valores
 
 plt.figure()
 plt.plot(x[:,], func(x[:,], a, b), color = "black", label = "mínimos quadráticos")
