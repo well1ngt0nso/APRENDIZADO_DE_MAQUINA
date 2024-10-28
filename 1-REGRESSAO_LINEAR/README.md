@@ -2,9 +2,9 @@
 
 Acho que uma bom tema para iniciar é Regressão Linear, quando comecei no mundo da programação uma das coisas que mais achava interessante eram a manipulação e geeração de gráficos e logo após um tempo as famosas RNA's, e se tem uma coisa que não se pode faltar quando agente fala disso são os gráficos... Mas vamos lá, Nesse poster trago a implementação de um algorítmo fr regressão, um programado apartir de uma fórmula (minimos) e outro apartir da bivliotrca skelearn (skelear.linear_model.LinearRegression();
 
-Para leigos:
+Ideia:
 
-A regressão linear é uma ferreamentaque busca modelar a relação entre um conjunto de dados, em outras palavreas ela busca apróximar "funcionamento" de um conjunto de dados com objetivo de prever novos valores. Na matemática voçê já viu falar na equação do 1° grau **y = ax + b**,
+A regressão linear é uma ferreamentaque busca modelar a relação entre um conjunto de dados, em outras palavreas ela busca apróximar "funcionamento" de um conjunto de dados com objetivo de prever novos valores. Na matemática voçê já viu falar na equação do 1° grau **y = ax + b**
 
 ### O problema: 
 
@@ -40,7 +40,10 @@ Como você gosta de desafios partiu para a segunda opção:
       plt.savefig('disperção.svg', format='svg',  bbox_inches='tight')
       plt.show()
      ```
-![GRÁFICO DE DISPERSÃO](PLOTS/dispersao.svg)
+     
+ <p align="center">
+  <img src="PLOTS/dispersao.svg" width="50%" />
+</p>
 
 A partir deste momento, você já consegue observar o comportamento linear entre **V** e **I**, como é esperado. Basta calcular a reta que melhor aproxima esse conjunto de pontos, algo no formato **y = ax + b**. No nosso caso, isso se traduz em **V = RI**, onde **R = a** (coeficiente angular).
 ## CONCEITUAÇÃO
@@ -75,7 +78,7 @@ No nosso caso temos um modelo para prever a corrente \(I\) em um circuito com ba
 
 - **Aprendizado Supervisionado:** Utilizando os dados acima, o modelo aprenderá a mapear a tensão (entrada) para a corrente (rótulo). Se o modelo prever que \(5V\) resulta em \(1.5A\), ele calculará o erro comparando essa previsão com o rótulo \(2A\) para ajustar seus parâmetros.
 
-- **Aprendizado Não Supervisionado:** Se tivermos apenas as tensões sem as correntes, o modelo pode tentar agrupar as tensões em clusters (veremos isso aindada, comentem para eu linkar) com base em padrões identificados, sem saber qual é a corrente associada.
+- **Aprendizado Não Supervisionado:** Se tivermos apenas as tensões sem as correntes, o modelo pode tentar agrupar as tensões em clusters (veremos isso ainda, comentem para eu lembrar de linkar) com base em padrões identificados, sem saber qual é a corrente associada.
 
   No aprendizado não supervisionado o modelo não tem accesso aos rótulos ou só temos as entradas e não os valores de sída mesmmo
   
@@ -95,7 +98,7 @@ Gostaria de destacar apenas a forma que calculei:
 
    ```python
          
-      """ ##DESEMVOLVENDO A LÓGICA (MÉTODO DOS MÍNIMOS QUADRÁTICOS)
+      """ ##DESENVOLVENDO A LÓGICA (MÉTODO DOS MÍNIMOS QUADRÁTICOS)
       """
       
       # y = ax + b
@@ -119,35 +122,53 @@ Gostaria de destacar apenas a forma que calculei:
       a =  (sum_y/n) - (b*(sum_x/n))
       print("COEFICIENT LINEAR:", a)
    ```
-    
-![regresão mínimos quadráticos](PLOTS/metodos_mt_comp.svg)
 
+Ou seja, encontrei os coeficientes, agora plotei a reta a partir deles: 
+    
+ <p align="center">
+  <img src="PLOTS/metodos_mt_comp.svg" width="50%" />
+</p>
 
 ### MÉTODO 1: MÉTODO UTILIZANDO A BIBLIOTÉCA SKLEARN
 
-Em poucas linhas conseguimos criar um modelo de aprendizado de máquina e treinalo, em suma 2, o restante é manipulação: 
+Em poucas linhas conseguimos criar um modelo de aprendizado de máquina e treiná-lo, em suma 3, o restante é manipulação: 
+
+1. Instala a lib `import sklearn.linear_model`
+2. Seleciona o modelo `model = sklearn.linear_model.LinearRegression()`
+3. Manipula/Trata os dados se necessário `x.reshape(-1,1)
+                                          y.reshape(-1,1)` 
+5. Fornece os dados para treinamento `model.fit(x,y) `
+6. Testa `print(model.predict([[2], [4]]))` 
+
 ```python
 import matplotlib.pyplot as plt
 import numpy as np
 import sklearn.linear_model
 
 model = sklearn.linear_model.LinearRegression() # Criando modelo Linear
-x = x.reshape(-1,1) # x y são estão no formato (84,), .fit aceita matrizes
-y = y.reshape(-1,1) # então crio uma de 1 coluna e a quantidade de linhas a função escolhe (-1)
+x = x.reshape(-1,1) # x y não estão no formato esperado (84,1), mas (84,), .fit aceita matrizes
+y = y.reshape(-1,1) # então crio uma de 1 coluna e a quantidade de linhas a função escolhe (-1), (L, C)
 model.fit(x,y) #treino o modelo no conjunto já tratado
-x.shape
+# x.shape 
 
 print(model.predict([[2], [4]])) #prevê a saída para dois valores
 ```
 
-Aqui a comparação entre o modelo analítico (MMQT)  e  model.linear_model.LinearRegression(), fica praticaamente inperceptível a diferença:
+Aqui a comparação entre o modelo baseado em uma solução analítica (MMQT)  e  model.linear_model.LinearRegression(), fica praticaamente inperceptível a diferença:
 
-![equação método dos mínimos quadráticos](PLOTS/metodos_predict_comp.svg)
+ <p align="center">
+  <img src="PLOTS/metodos_predict_comp.svg" width="50%" />
+</p>
+
 
 Aqui podemos ver melhor o erro, veja que é x10^(-15)
 
-![equação método dos mínimos quadráticos](PLOTS/erro.svg)
 
+ <p align="center">
+  <img src="PLOTS/erro.svg" width="50%" />
+</p>
+
+## Conclusão, ambos são bons para modelar a relação entre dois conjuntos de dados lineares, além de serem de rápida implementação e escalabilidade;
 
 Todo o algorítmo e dados utilizados se enontram [aqui](1-REGRESSAO_LINEAR/regressão_liner_ou_métodos_dos_mínimos_quadráticos.py).
 
