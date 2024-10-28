@@ -1,10 +1,10 @@
 ## REGRESSÃO LINEAR
 
-Acho que uma bom tema para iniciar é Regressão Linear, quando comecei no mundo da programação uma das coisas que mais achava interessante eram a manipulação e geeração de gráficos e logo após um tempo as famosas RNA's, e se tem uma coisa que não se pode faltar quando agente fala disso são os gráficos... Mas vamos lá, Nesse poster trago a implementação de um algorítmo fr regressão, um programado apartir de uma fórmula (minimos) e outro apartir da bivliotrca skelearn (skelear.linear_model.LinearRegression();
+Acho que uma bom tema para iniciar é Regressão Linear, quando comecei no mundo da programação uma das coisas que mais achava interessante eram a manipulação e geração de gráficos e logo após um tempo a implantação das famosas RNA's, e se tem uma coisa que não se pode faltar quando a gente fala disso são os gráficos... Mas vamos lá, Nesse pôster trago a implementação de um algorítmo de Regressão, um programado a partir de uma fórmula analítica (mínimos quadráticos) e outro a partir da biblioteca sklearn (sklearn.linear_model.LinearRegression();
 
 Ideia:
 
-A regressão linear é uma ferreamentaque busca modelar a relação entre um conjunto de dados, em outras palavreas ela busca apróximar "funcionamento" de um conjunto de dados com objetivo de prever novos valores. Na matemática voçê já viu falar na equação do 1° grau **y = ax + b**
+A regressão linear é uma ferreamenta que busca modelar a relação entre um conjunto de dados, em outras palavras ela busca apróximar o "funcionamento" de um conjunto de dados com objetivo de prever novos valores. Na matemática voçê já deve ter ouvido falar na equação do 1° grau **y = ax + b**
 
 ### O problema: 
 
@@ -16,13 +16,13 @@ Você estava em seu laboratório e estava trabalhando em um resistor feito de gr
 
 **R=V/I**
 
-Após a primeira medição, você chegou a um valor de 100Ω (ohms). Duvidando do resultado, você testou outro valor e obteve 80Ω. Ao realizar várias medições, percebeu que os valores apresentavam leves variações.
+Após a primeira medição, você chegou a um valor de 100Ω (ohms). Duvidando do resultado, você testou outro valor e obteve 80Ω... Ao realizar várias medições, percebeu que os valores apresentavam leves variações.
 
-Nesse ponto, você quer um valor mais confiável para descrever seu resistor. Uma alternativa é somar todas as observações e calcular a média.
+Nesse momento, você quer um valor mais confiável para descrever seu resistor. Uma alternativa é somar todas as observações e calcular a média.
 Como você gosta de desafios partiu para a segunda opção:
 
 1. Você fez várias mediçoes:
-2. Plotou Todas em um gráfico de corrente por tensão
+2. Plotou todas em um gráfico de corrente por tensão:
 
      ```python
       """##PLOTAGEM DOS DADOS"""
@@ -46,6 +46,7 @@ Como você gosta de desafios partiu para a segunda opção:
 </p>
 
 A partir deste momento, você já consegue observar o comportamento linear entre **V** e **I**, como é esperado. Basta calcular a reta que melhor aproxima esse conjunto de pontos, algo no formato **y = ax + b**. No nosso caso, isso se traduz em **V = RI**, onde **R = a** (coeficiente angular).
+
 ## CONCEITUAÇÃO
 
 - **TARGET:** Variável alvo, neste caso, a corrente em um componente de acordo com a tensão aplicada.
@@ -129,14 +130,13 @@ Ou seja, encontrei os coeficientes, agora plotei a reta a partir deles:
   <img src="PLOTS/metodos_mt_comp.svg" width="50%" />
 </p>
 
-### MÉTODO 1: MÉTODO UTILIZANDO A BIBLIOTÉCA SKLEARN
+### MÉTODO 2: MÉTODO UTILIZANDO A BIBLIOTÉCA SKLEARN
 
 Em poucas linhas conseguimos criar um modelo de aprendizado de máquina e treiná-lo, em suma 3, o restante é manipulação: 
 
-1. Instala a lib `import sklearn.linear_model`
+1. Instalação da lib `import sklearn.linear_model`
 2. Seleciona o modelo `model = sklearn.linear_model.LinearRegression()`
-3. Manipula/Trata os dados se necessário `x.reshape(-1,1)
-                                          y.reshape(-1,1)` 
+3. Manipula/Trata os dados se necessário `x.reshape(-1,1) y.reshape(-1,1)` 
 5. Fornece os dados para treinamento `model.fit(x,y) `
 6. Testa `print(model.predict([[2], [4]]))` 
 
