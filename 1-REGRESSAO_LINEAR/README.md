@@ -43,8 +43,43 @@ Como você gosta de desafios partiu para a segunda opção:
 ![GRÁFICO DE DISPERSÃO](PLOTS/dispersao.svg)
 
 A partir deste momento, você já consegue observar o comportamento linear entre **V** e **I**, como é esperado. Basta calcular a reta que melhor aproxima esse conjunto de pontos, algo no formato **y = ax + b**. No nosso caso, isso se traduz em **V = RI**, onde **R = a** (coeficiente angular).
+## CONCEITUAÇÃO
 
-A primeira forma que vamos utilizar é por meio de métodos analíticos:
+- **TARGET:** Variável alvo, neste caso, a corrente em um componente de acordo com a tensão aplicada.
+  
+- **INSTÂNCIA:** Uma amostra que, neste contexto, refere-se ao par de tensão e sua respectiva corrente, ou seja, a entrada e a saída. Vale salientar que no nosso caso temos uma entrada (V), mas poderia ser um modelo com múltiplas entradas. Nesse caso, a instância seria um vetor de características (features), e o rótulo poderia também ser um vetor.
+
+- **RÓTULO:** O valor esperado para uma determinada entrada. No nosso caso, os valores de \(y\) são os nossos rótulos.
+
+## APRENDIZADO SUPERVISIONADO VS NÃO SUPERVISIONADO
+
+- **Aprendizado Supervisionado:** Neste tipo de aprendizado, os dados de treinamento consistem em um conjunto de entradas e saídas esperadas. O modelo utiliza esses rótulos para calcular métricas, como o erro. Por exemplo, para uma entrada \(b\), o valor predito pelo modelo é comparado ao valor esperado (rótulo). Com essa comparação, o modelo pode ajustar seus parâmetros para melhorar a precisão.
+
+- **Aprendizado Não Supervisionado:** Ao contrário do aprendizado supervisionado, o modelo não tem acesso aos rótulos; ele possui apenas as entradas, sem valores de saída correspondentes. O objetivo, neste caso, é identificar padrões ou estruturas subjacentes nos dados, como agrupamentos ou associações, sem supervisão explícita.
+
+### EXEMPLO PRÁTICO
+
+No nosso caso temos um modelo para prever a corrente \(I\) em um circuito com base na tensão \(V\). Temos os seguintes dados:
+
+<div align="center">
+
+| Tensão (V) | Corrente (A) |
+|------------|--------------|
+| 5          | 2            |
+| 10         | 4            |
+| 15         | 6            |
+
+</div>
+
+- **Instância:** Cada linha da tabela representa uma instância. Por exemplo, a instância correspondente a \(5V\) e \(2A\) é uma amostra onde a entrada é \(5V\) e o rótulo é \(2A\).
+
+- **Aprendizado Supervisionado:** Utilizando os dados acima, o modelo aprenderá a mapear a tensão (entrada) para a corrente (rótulo). Se o modelo prever que \(5V\) resulta em \(1.5A\), ele calculará o erro comparando essa previsão com o rótulo \(2A\) para ajustar seus parâmetros.
+
+- **Aprendizado Não Supervisionado:** Se tivermos apenas as tensões sem as correntes, o modelo pode tentar agrupar as tensões em clusters (veremos isso aindada, comentem para eu linkar) com base em padrões identificados, sem saber qual é a corrente associada.
+
+  No aprendizado não supervisionado o modelo não tem accesso aos rótulos ou só temos as entradas e não os valores de sída mesmmo
+  
+## A primeira forma que vamos utilizar é por meio de métodos analíticos:
 
 ### MÉTODO 1: MÉTODO DOS MÍNIMOS QUADRÁTICOS
 
