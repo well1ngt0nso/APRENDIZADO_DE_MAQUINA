@@ -38,7 +38,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import sklearn.neighbors
 
-model = sklearn.neighbors.KNeighborsRegressor(n_neighbors=4)  # Criando modelo onde recebe como argumento o número de vizinhos mais próximos (n_neighbors); nesse caso, decidi por 4
+model = sklearn.neighbors.KNeighborsRegressor(n_neighbors=7  # Criando modelo onde recebe como argumento o número de vizinhos mais próximos (n_neighbors); nesse caso, decidi por 7
 x = x.reshape(-1,1)  # Ajustando x para o formato esperado pelo modelo (de (84,) para (84,1))
 y = y.reshape(-1,1)  # Ajustando y para o formato esperado pelo modelo
 
