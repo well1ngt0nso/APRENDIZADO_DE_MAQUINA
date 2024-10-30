@@ -61,4 +61,5 @@ Esse método direto, utilizando *sklearn*, facilita o processo de criação, tre
  <p align="center">
   <img src="PLOTS/comp.svg" width="50%" />
 </p>
+
 ### Utilizando um algorítmo baseado na ideia matemática 
