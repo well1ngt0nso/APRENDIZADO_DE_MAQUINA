@@ -56,10 +56,34 @@ Esse método direto, utilizando *sklearn*, facilita o processo de criação, tre
 
 #### Resultado: 
 
-#### Comparação:
-
  <p align="center">
   <img src="PLOTS/comp.svg" width="50%" />
 </p>
+
+
+O valor de \( n \) foi definido exclusivamente de forma empírica. Observemos que não existe uma fórmula que determine a melhor estrutura a ser utilizada no modelo ou qual o melhor modelo em si. Embora exista um caminho mais eficaz para chegar a conclusões, ao falarmos sobre parâmetros, a situação se torna mais complexa. Na maioria dos casos, a melhor abordagem é testar diferentes valores ou basear-se em conhecimento empírico.
+
+Neste exemplo, seria interessante testar uma variedade de valores de \( n \) e analisar qual proporciona os melhores resultados.
+
+ <p align="center">
+  <img src="PLOTS/n_neighbors.svg" width="50%" />
+</p>
+
+
+
+Essa imagem serve como um lembrete de algumas observações e decisões tomadas no processo de modelagem:
+
+1. **Objetivo**: Nosso principal objetivo era encontrar o melhor valor para a resistência \( R \), que representa o coeficiente angular da reta.
+2. **Relação Linear**: Observamos que o sistema segue uma relação linear entre as variáveis, o que facilitou a modelagem.
+3. **Previsão de Valores**: A partir dessa relação, buscamos prever valores da variável \( A \).
+
+Apesar de ser uma relação linear, os dados possuem certo ruído, o que os afasta de uma reta perfeita. Em teoria, quanto melhores as condições, mais os dados se aproximam da relação linear ideal. Ao modelar o sistema para capturar a realidade dos dados, experimentamos diferentes valores de \( n \) (o número de vizinhos no modelo KNN). Com \( n = 1 \), o modelo se ajusta fortemente aos dados, enquanto com \( n = 7 \) observamos uma suavização que se aproxima mais das condições teóricas.
+
+É importante ressaltar que o valor ideal de \( n \) não segue uma regra rígida. Tanto valores menores quanto maiores para \( n \) podem afetar a qualidade do modelo de formas diferentes. Características como o tamanho do conjunto de dados, a qualidade e quantidade de variáveis, e o nível de ruído influenciam essa escolha.
+
+Uma abordagem extrema seria definir \( n \) igual ao número total de amostras. Nesse caso, o modelo se ajusta tanto aos dados que gera uma linha quase reta, indicando uma suavização excessiva e uma perda da capacidade de identificar a complexidade e os padrões nos dados.
+
+Em resumo, a escolha de \( n \) requer experimentação e análise para alcançar um modelo equilibrado que capture bem os padrões sem se perder no ruído.
+
 
 ### Utilizando um algorítmo baseado na ideia matemática 
