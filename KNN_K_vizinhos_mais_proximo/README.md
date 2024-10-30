@@ -24,7 +24,8 @@ Os modelos baseados em instância, como o KNN, podem ser muito eficazes em probl
 
 ## DESENVOLVENDO UM MODELO KNN, OU SEJA, BASEADO EM INSTÂNCIA
 
-Iremos fazer isso de duas formas:
+Iremos fazer isso de duas formas:![Uploading metodos_mt_comp.svg…]()
+
 1. Utilizando a biblioteca `sklearn`
 2. Modelando matematicamente em Python
    
@@ -57,4 +58,7 @@ Esse método direto, utilizando *sklearn*, facilita o processo de criação, tre
 
 #### Comparação:
 
+ <p align="center">
+  <img src="PLOTS/comp.svg" width="50%" />
+</p>
 ### Utilizando um algorítmo baseado na ideia matemática 
